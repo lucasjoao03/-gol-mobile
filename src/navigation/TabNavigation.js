@@ -1,9 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import DashboardScreen from "./screens/DashboardScreen";
-import TeamsScreen from "./screens/TeamsScreen";
-import SettingsScreen from "./screens/SettingsScreen";
+import HomeScreen from "../screens/HomeScreen";
+import TreinosScreen from "../screens/TreinosScreen";
+import TreinadoresScreen from "../screens/TreinadoresScreen";
+import AlunosScreen from "../screens/AlunosScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -14,11 +15,13 @@ const TabNavigation = () => {
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
-          if (route.name === "Dashboard") {
+          if (route.name === "Home") {
             iconName = "ios-home";
-          } else if (route.name === "Teams") {
+          } else if (route.name === "Treinos") {
+            iconName = "ios-settings";
+          } else if (route.name === "Alunos") {
             iconName = "ios-people";
-          } else if (route.name === "Settings") {
+          } else if (route.name === "Treinadores") {
             iconName = "ios-settings";
           }
 
@@ -28,9 +31,10 @@ const TabNavigation = () => {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Dashboard" component={DashboardScreen} />
-      <Tab.Screen name="Teams" component={TeamsScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Treinos" component={TreinosScreen} />
+      <Tab.Screen name="Treinadores" component={TreinadoresScreen} />
+      <Tab.Screen name="Alunos" component={AlunosScreen} />
     </Tab.Navigator>
   );
 };

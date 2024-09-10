@@ -7,14 +7,19 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    console.log("Login attempted with:", username, password);
+    navigation.replace("TabNavigatorName", {
+      screen: "Home",
+    });
   };
 
   return (

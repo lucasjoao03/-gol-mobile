@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../screens/HomeScreen";
 import TreinosScreen from "../screens/TreinosScreen";
-import TreinadoresScreen from "../screens/TreinadoresScreen";
-import AlunosScreen from "../screens/AlunosScreen";
-
+import TreinadoresStack from "./TreinadoresStack";
+import AlunosStack from "../navigation/AlunosStack";
+import TurmasScreen from "../screens/TurmasScreen";
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
@@ -16,25 +16,33 @@ const TabNavigation = () => {
           let iconName;
 
           if (route.name === "Home") {
-            iconName = "ios-home";
+            iconName = "home";
           } else if (route.name === "Treinos") {
-            iconName = "ios-settings";
+            iconName = "football";
           } else if (route.name === "Alunos") {
-            iconName = "ios-people";
+            iconName = "people";
           } else if (route.name === "Treinadores") {
-            iconName = "ios-settings";
+            iconName = "person";
+          } else if (route.name === "Turmas") {
+            iconName = "person";
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "#4CAF50",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: "#FFFFFF",
+        tabBarInactiveTintColor: "#B3B3B3",
+        tabBarStyle: {
+          backgroundColor: "#212121",
+          borderTopWidth: 0,
+        },
+        headerShown: false,
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Treinos" component={TreinosScreen} />
-      <Tab.Screen name="Treinadores" component={TreinadoresScreen} />
-      <Tab.Screen name="Alunos" component={AlunosScreen} />
+      <Tab.Screen name="Treinadores" component={TreinadoresStack} />
+      <Tab.Screen name="Alunos" component={AlunosStack} />
+      <Tab.Screen name="Turmas" component={TurmasScreen} />
     </Tab.Navigator>
   );
 };

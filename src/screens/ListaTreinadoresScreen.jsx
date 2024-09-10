@@ -6,10 +6,11 @@ const ListaTreinadoresScreen = ({ route }) => {
 
   useEffect(() => {
     if (route.params && route.params.treinador) {
-      setTreinadores((prevTreinadores) => [
-        ...prevTreinadores,
-        route.params.treinador,
-      ]);
+      // setTreinadores((prevTreinadores) => [
+      //   ...prevTreinadores,
+      //   route.params.treinador,
+      // ]);
+      treinadores.push(route.params.treinador);
     }
   }, [route.params]);
 

@@ -17,9 +17,7 @@ const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    navigation.replace("TabNavigatorName", {
-      screen: "Home",
-    });
+    navigation.navigate("Home");
   };
 
   return (

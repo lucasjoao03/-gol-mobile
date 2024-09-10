@@ -6,6 +6,9 @@ import TreinosScreen from "../screens/TreinosScreen";
 import TreinadoresStack from "./TreinadoresStack";
 import AlunosStack from "../navigation/AlunosStack";
 import TurmasScreen from "../screens/TurmasScreen";
+import AlunosScreen from "../screens/AlunosScreen";
+import TreinadoresScreen from "../screens/TreinadoresScreen";
+// import TurmasStack from "../navigation/TurmasStack";
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
@@ -24,7 +27,7 @@ const TabNavigation = () => {
           } else if (route.name === "Treinadores") {
             iconName = "person";
           } else if (route.name === "Turmas") {
-            iconName = "person";
+            iconName = "people-circle-outline";
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -40,8 +43,8 @@ const TabNavigation = () => {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Treinos" component={TreinosScreen} />
-      <Tab.Screen name="Treinadores" component={TreinadoresStack} />
-      <Tab.Screen name="Alunos" component={AlunosStack} />
+      <Tab.Screen name="Treinadores" component={TreinadoresScreen} />
+      <Tab.Screen name="Alunos" component={AlunosScreen} />
       <Tab.Screen name="Turmas" component={TurmasScreen} />
     </Tab.Navigator>
   );

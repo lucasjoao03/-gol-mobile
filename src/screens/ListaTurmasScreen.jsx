@@ -8,7 +8,7 @@ import {
   Alert,
 } from "react-native";
 
-const TurmasScreen = () => {
+const ListaTurmasScreen = () => {
   const [turmas, setTurmas] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -105,7 +105,6 @@ const TurmasScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Turmas</Text>
       <FlatList
         data={turmas}
         keyExtractor={(item) => item.id.toString()}
@@ -118,23 +117,14 @@ const TurmasScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1e1e1e", // Cor de fundo semelhante ao HomeScreen
+    backgroundColor: "#1e1e1e",
     padding: 20,
-  },
-  header: {
-    fontSize: 28,
-    color: "#4CAF50", // Cor do título igual ao HomeScreen
-    marginBottom: 20,
-    textAlign: "center",
-    fontWeight: "bold",
-    marginTop: 50,
   },
   turmaContainer: {
     backgroundColor: "#2e2e2e",
     padding: 15,
     borderRadius: 10,
     marginBottom: 15,
-    elevation: 3,
   },
   turmaNome: {
     fontSize: 18,
@@ -151,19 +141,20 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   editButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#4CAF50",
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
   },
   deleteButton: {
-    backgroundColor: "#DC3545",
+    backgroundColor: "#f44336",
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
   },
   buttonText: {
     color: "#FFF",
+    fontSize: 16,
   },
   loadingContainer: {
     flex: 1,
@@ -176,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TurmasScreen;
+export default ListaTurmasScreen;

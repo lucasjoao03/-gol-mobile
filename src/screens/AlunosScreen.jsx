@@ -15,13 +15,13 @@ import {
 const AlunosScreen = () => {
   const [alunos, setAlunos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedAluno, setSelectedAluno] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  // const [selectedAluno, setSelectedAluno] = useState(null);
+  // const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const fetchAlunos = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/athletes");
+        const response = await fetch("http://192.168.56.1:8000/api/athletes");
         if (!response.ok) {
           throw new Error("Erro ao buscar os alunos");
         }
@@ -38,42 +38,43 @@ const AlunosScreen = () => {
     fetchAlunos();
   }, []);
 
-  const handleEdit = (aluno) => {
-    setSelectedAluno(aluno);
-    setIsEditing(true);
-  };
+  // const handleEdit = (aluno) => {
+  //   setSelectedAluno(aluno);
+  //   setIsEditing(true);
+  // };
 
-  const handleSave = async () => {
-    try {
-      const response = await fetch(
-        `http://127.0.0.1:8000/api/athletes/${selectedAluno.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(selectedAluno),
-        }
-      );
-      if (!response.ok) {
-        throw new Error("Erro ao atualizar o aluno");
-      }
-      const updatedAluno = await response.json();
-      setAlunos((prevAlunos) =>
-        prevAlunos.map((aluno) =>
-          aluno.id === updatedAluno.id ? updatedAluno : aluno
-        )
-      );
-      setIsEditing(false);
-      setSelectedAluno(null);
-    } catch (error) {
-      Alert.alert("Erro", error.message);
-    }
-  };
+  // const handleSave = async () => {
+  //   return;
+  //   try {
+  //     const response = await fetch(
+  //       `http://127.0.0.1:8000/api/athletes/${selectedAluno.id}`,
+  //       {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(selectedAluno),
+  //       }
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Erro ao atualizar o aluno");
+  //     }
+  //     const updatedAluno = await response.json();
+  //     setAlunos((prevAlunos) =>
+  //       prevAlunos.map((aluno) =>
+  //         aluno.id === updatedAluno.id ? updatedAluno : aluno
+  //       )
+  //     );
+  //     setIsEditing(false);
+  //     setSelectedAluno(null);
+  //   } catch (error) {
+  //     Alert.alert("Erro", error.message);
+  //   }
+  // };
 
-  const handleInputChange = (field, value) => {
-    setSelectedAluno({ ...selectedAluno, [field]: value });
-  };
+  // const handleInputChange = (field, value) => {
+  //   setSelectedAluno({ ...selectedAluno, [field]: value });
+  // };
 
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
@@ -82,12 +83,12 @@ const AlunosScreen = () => {
       <Text style={styles.itemSubText}>
         Data de Nascimento: {item.birth_date}
       </Text>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.editButton}
         onPress={() => handleEdit(item)}
       >
         <Text style={styles.editButtonText}>Editar</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 
@@ -108,7 +109,7 @@ const AlunosScreen = () => {
         renderItem={renderItem}
       />
 
-      {selectedAluno && (
+      {/* {selectedAluno && (
         <Modal
           visible={isEditing}
           animationType="slide"
@@ -148,7 +149,7 @@ const AlunosScreen = () => {
             </View>
           </View>
         </Modal>
-      )}
+      )} */}
     </View>
   );
 };
